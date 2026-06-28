@@ -63,7 +63,7 @@ function updateClocks() {
 }
 
 // Update clocks immediately and then every second
-updateClock();
+updateClocks();
 setInterval(updateClocks, 1000);
 
 // Add some console logging for debugging
