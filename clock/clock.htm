@@ -1,18 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>世界時鐘</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+<title>🕓全方位網路世界時鐘🌐</title>
+<style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
 
     body {
     font-family: 'Poppins', sans-serif;
@@ -69,17 +70,45 @@
         }
 
         h1 {
-            text-align: center;
-            color: white;
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-            animation: slideDown 0.6s ease-out;
-        }
+  margin-top: 0 !important;   /* 強制把上方間距設為 0 */
+  margin-bottom: 0.1vw !important; /* 視需要調整下方間距 */
+  filter: blur(0.6px); /* 減少模糊，粗細更清楚 */
+  font-size: 3.8vw;
+  font-weight: 900; /* 使用 Montserrat 的特粗字重 */
+  text-align: center;
+  font-family: "Noto Sans TC", "Noto Serif TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+  animation: colorchange 12s infinite;
+  z-index: 5;
+  text-shadow: 0 0 10px currentColor, 0 0 30px currentColor;
+}
+  @keyframes colorchange {
+  0%   { color: #ff6666; }   /* 淺紅 */
+  5%   { color: #ff9966; }   /* 橘粉 */
+  10%  { color: #ffcc66; }   /* 金黃 */
+  15%  { color: #ffee66; }   /* 淺黃 */
+  20%  { color: #ff66aa; }   /* 桃紅 */
+  25%  { color: #ff99cc; }   /* 粉紅 */
+  30%  { color: #ffccff; }   /* 淡粉紫 */
+  35%  { color: #cc99ff; }   /* 淺紫 */
+  40%  { color: #b3c6ff; }   /* 淡藍紫 (比9999ff更亮) */
+  45%  { color: #99ccff; }   /* 淺亮藍 */
+  50%  { color: #aaddff; }   /* 天空藍 (取代偏暗6699ff) */
+  55%  { color: #cceeff; }   /* 淡冰藍 (取代偏綠66ffff) */
+  60%  { color: #99ffff; }   /* 冰藍 */
+  65%  { color: #ccffff; }   /* 淺水藍 */
+  70%  { color: #e6ffff; }   /* 幾乎白的藍 */
+  75%  { color: #ffccdd; }   /* 淡粉白 */
+  80%  { color: #ffddee; }   /* 淡紫粉 */
+  85%  { color: #ffeeff; }   /* 淡紫白 */
+  90%  { color: #fff0f5; }   /* 淺玫瑰白 */
+  95%  { color: #ffe6f2; }   /* 淡粉白亮色 */
+  100% { color: #ff6666; }   /* 回到淺紅 */
+  }
+
 
         .subtitle {
             text-align: center;
-            color: rgba(255, 255, 255, 0.9);
+            color: #0080FF;
             font-size: 1.2em;
             margin-bottom: 40px;
             animation: slideDown 0.8s ease-out;
@@ -121,7 +150,7 @@
         .timezone-name {
             font-size: 1.1em;
             font-weight: 600;
-            color: #fff;
+            color: #46A3FF;
             margin-bottom: 15px;
         }
 
@@ -158,7 +187,7 @@
         }
 
         .local-time h2 {
-            color: #fff;
+            color: #0080FF;
             margin-bottom: 20px;
             font-size: 1.8em;
         }
@@ -173,15 +202,15 @@
         .local-clock .time {
             font-size: 4em;
             font-weight: bold;
-            color: #333;
+            color: #005AB5;
             font-family: 'Courier New', monospace;
             letter-spacing: 4px;
         }
 
         .local-clock .date {
-            font-size: 1.3em;
-            color: #fff;
-            font-weight: 500;
+            font-size: 1.6em;
+            color: #46A3FF;
+            font-weight: 700;
         }
 
         @media (max-width: 768px) {
@@ -198,14 +227,78 @@
             .clock {font-size: 1.5em;}
             .local-clock .time {font-size: 2em;}
         }
+
+
+/* Reset */
+html,body {
+height:100%;
+  overflow-x: hidden;   /* 禁止橫向滾動 */
+  overflow-y: auto;     /* ✅ 允許垂直滾動 */
+}
+
+
+/* 小型手機（小於 480px） */
+@media (max-width: 479px) {
+  .container {
+    padding: 80px 10px 30px 10px; /* 頂部留空 + 減少左右邊距 */
+    max-width: 95%;              /* 容器寬度縮小，避免靠左 */
+  }
+  .title {
+    font-size: 24px;             /* 標題縮小 */
+  }
+  .grid {
+    gap: 12px;                   /* 卡片間距縮小 */
+    grid-template-columns: 1fr;  /* 單欄顯示 */
+  }
+  .card {
+    font-size: 14px;             /* 卡片字體縮小 */
+    padding: 14px;               /* 卡片內距縮小 */
+    width: 100%;                 /* 卡片寬度填滿容器 */
+  }
+}
+/* 中型手機（480px 到 767px） */
+@media (min-width: 480px) and (max-width: 767px) {
+  .container {
+    padding: 90px 15px 35px 15px;
+    max-width: 95%;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .grid {
+    gap: 14px;
+    grid-template-columns: repeat(2, 1fr); /* 兩欄顯示 */
+  }
+  .card {
+    font-size: 15px;
+    padding: 16px;
+  }
+}
+/* 平板（768px 到 1023px） */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding: 100px 20px 40px 20px;
+    max-width: 90%;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .grid {
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr); /* 三欄顯示 */
+  }
+  .card {
+    font-size: 16px;
+    padding: 18px;
+  }
+}
 </style>
 </head>
 <body>
-    <div class="container">
-        <h1>世界時鐘</h1>
-        <p class="subtitle">查看不同時區的目前時間</p>
-        
-        <div class="clocks-grid">
+<div class="container">
+<h1>🕓全方位網路世界時鐘🌏</h1>
+<p class="subtitle"><b>查看不同時區的目前時間</b></p>
+<div class="clocks-grid">
             <div class="clock-card"><div class="timezone-name">紐約 (EST)</div><div class="clock" id="clock-newyork">00:00:00</div><div class="timezone-offset">UTC-5</div></div>
             <div class="clock-card"><div class="timezone-name">倫敦 (GMT)</div><div class="clock" id="clock-london">00:00:00</div><div class="timezone-offset">UTC+0</div></div>
             <div class="clock-card"><div class="timezone-name">東京 (JST)</div><div class="clock" id="clock-tokyo">00:00:00</div><div class="timezone-offset">UTC+9</div></div>
@@ -214,18 +307,18 @@
             <div class="clock-card"><div class="timezone-name">新加坡 (SGT)</div><div class="clock" id="clock-singapore">00:00:00</div><div class="timezone-offset">UTC+8</div></div>
             <div class="clock-card"><div class="timezone-name">洛杉磯 (PST)</div><div class="clock" id="clock-losangeles">00:00:00</div><div class="timezone-offset">UTC-8</div></div>
             <div class="clock-card"><div class="timezone-name">香港 (HKT)</div><div class="clock" id="clock-hongkong">00:00:00</div><div class="timezone-offset">UTC+8</div></div>
-        </div>
-        
-        <div class="local-time">
-            <h2>你的本地時間</h2>
-            <div class="local-clock">
-                <div class="time" id="local-time">00:00:00</div>
-                <div class="date" id="local-date">載入中...</div>
-            </div>
-        </div>
-    </div>
+</div>
 
-    <script>
+<div class="local-time">
+<h2>你的本地時間</h2>
+<div class="local-clock">
+<div class="time" id="local-time">00:00:00</div>
+<div class="date" id="local-date">載入中...</div>
+</div>
+</div>
+</div>
+
+<script>
     function updateClock() {
         var now = new Date();
         var timezones = [
@@ -277,6 +370,28 @@
 
     updateClock();
     setInterval(updateClock, 1000);
+    
+    
+// 定義字型清單
+const fonts = [
+  '"Noto Sans TC"',       // 思源黑體
+  '"Noto Serif TC"',      // 思源宋體
+  '"Microsoft JhengHei"', // 微軟正黑體
+  '"PingFang TC"',        // 蘋方字體
+  'sans-serif'            // 保底
+];
+// 隨機挑一個字型
+const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
+// 套用到 h1，並加上完整 fallback 順序
+document.querySelector("h1").style.fontFamily =
+`${randomFont}, "Noto Sans TC", "Noto Serif TC", "Microsoft JhengHei", "PingFang TC", sans-serif`;
+// 綁定 Enter 事件
+document.getElementById("searchBox").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); // 防止表單預設提交
+    search(); // 呼叫搜尋函式
+  }
+});
 </script>
 </body>
 </html>
