@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Clock - Multiple Time Zones</title>
+    <title>數位時鐘 - 多個時區</title>
     <style>
         * {
             margin: 0;
@@ -192,64 +192,64 @@
 </head>
 <body>
     <div class="container">
-        <h1>World Clock</h1>
-        <p class="subtitle">Current time in different time zones</p>
+        <h1>世界時鐘</h1>
+        <p class="subtitle">查看不同時區的目前時間</p>
         
         <div class="clocks-grid">
             <div class="clock-card">
-                <div class="timezone-name">New York (EST)</div>
+                <div class="timezone-name">紐約 (EST)</div>
                 <div class="clock" id="clock-newyork">00:00:00</div>
                 <div class="timezone-offset">UTC-5</div>
             </div>
             
             <div class="clock-card">
-                <div class="timezone-name">London (GMT)</div>
+                <div class="timezone-name">倫敦 (GMT)</div>
                 <div class="clock" id="clock-london">00:00:00</div>
                 <div class="timezone-offset">UTC+0</div>
             </div>
             
             <div class="clock-card">
-                <div class="timezone-name">Tokyo (JST)</div>
+                <div class="timezone-name">東京 (JST)</div>
                 <div class="clock" id="clock-tokyo">00:00:00</div>
                 <div class="timezone-offset">UTC+9</div>
             </div>
             
             <div class="clock-card">
-                <div class="timezone-name">Sydney (AEDT)</div>
+                <div class="timezone-name">雪梨 (AEDT)</div>
                 <div class="clock" id="clock-sydney">00:00:00</div>
                 <div class="timezone-offset">UTC+11</div>
             </div>
             
             <div class="clock-card">
-                <div class="timezone-name">Dubai (GST)</div>
+                <div class="timezone-name">杜拜 (GST)</div>
                 <div class="clock" id="clock-dubai">00:00:00</div>
                 <div class="timezone-offset">UTC+4</div>
             </div>
             
             <div class="clock-card">
-                <div class="timezone-name">Singapore (SGT)</div>
+                <div class="timezone-name">新加坡 (SGT)</div>
                 <div class="clock" id="clock-singapore">00:00:00</div>
                 <div class="timezone-offset">UTC+8</div>
             </div>
             
             <div class="clock-card">
-                <div class="timezone-name">Los Angeles (PST)</div>
+                <div class="timezone-name">洛杉磯 (PST)</div>
                 <div class="clock" id="clock-losangeles">00:00:00</div>
                 <div class="timezone-offset">UTC-8</div>
             </div>
             
             <div class="clock-card">
-                <div class="timezone-name">Hong Kong (HKT)</div>
+                <div class="timezone-name">香港 (HKT)</div>
                 <div class="clock" id="clock-hongkong">00:00:00</div>
                 <div class="timezone-offset">UTC+8</div>
             </div>
         </div>
         
         <div class="local-time">
-            <h2>Your Local Time</h2>
+            <h2>你的本地時間</h2>
             <div class="local-clock">
                 <div class="time" id="local-time">00:00:00</div>
-                <div class="date" id="local-date">Loading...</div>
+                <div class="date" id="local-date">載入中...</div>
             </div>
         </div>
     </div>
@@ -303,8 +303,13 @@
             
             var dateElement = document.getElementById('local-date');
             if (dateElement) {
-                var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                dateElement.textContent = now.toLocaleDateString('en-US', options);
+                var weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+                var months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+                var weekday = weekdays[now.getDay()];
+                var month = months[now.getMonth()];
+                var date = now.getDate();
+                var year = now.getFullYear();
+                dateElement.textContent = year + '年 ' + month + ' ' + date + '日 ' + weekday;
             }
         }
 
