@@ -172,7 +172,8 @@
 
         .timezone-offset {
             font-size: 0.9em;
-            color: #eee;
+            color: #46A3FF;
+            font-weight: bold;
             margin-top: 10px;
         }
 
@@ -227,6 +228,15 @@
             .clock {font-size: 1.5em;}
             .local-clock .time {font-size: 2em;}
         }
+        
+        h2 {
+  text-align: center;   /* 文字置中 */
+  color: #0080FF;       /* 改字顏色，可以換成你喜歡的色碼 */
+  font-weight: bold;    /* 粗體讓標題更醒目 */
+  font-size: 1.2vw;     /* 調整字體大小 */
+  margin-top: 0;     /* 上方留白 */
+  margin-bottom: 15px;  /* 下方留白 */
+}
 
 
 /* Reset */
@@ -297,16 +307,84 @@ height:100%;
 <body>
 <div class="container">
 <h1>🕓全方位網路世界時鐘🌏</h1>
-<p class="subtitle"><b>查看不同時區的目前時間</b></p>
+<p class="subtitle"><b>查看世界不同時區的即時時間</b></p>
 <div class="clocks-grid">
-            <div class="clock-card"><div class="timezone-name">紐約 (EST)</div><div class="clock" id="clock-newyork">00:00:00</div><div class="timezone-offset">UTC-5</div></div>
-            <div class="clock-card"><div class="timezone-name">倫敦 (GMT)</div><div class="clock" id="clock-london">00:00:00</div><div class="timezone-offset">UTC+0</div></div>
-            <div class="clock-card"><div class="timezone-name">東京 (JST)</div><div class="clock" id="clock-tokyo">00:00:00</div><div class="timezone-offset">UTC+9</div></div>
-            <div class="clock-card"><div class="timezone-name">雪梨 (AEDT)</div><div class="clock" id="clock-sydney">00:00:00</div><div class="timezone-offset">UTC+11</div></div>
-            <div class="clock-card"><div class="timezone-name">杜拜 (GST)</div><div class="clock" id="clock-dubai">00:00:00</div><div class="timezone-offset">UTC+4</div></div>
-            <div class="clock-card"><div class="timezone-name">新加坡 (SGT)</div><div class="clock" id="clock-singapore">00:00:00</div><div class="timezone-offset">UTC+8</div></div>
-            <div class="clock-card"><div class="timezone-name">洛杉磯 (PST)</div><div class="clock" id="clock-losangeles">00:00:00</div><div class="timezone-offset">UTC-8</div></div>
-            <div class="clock-card"><div class="timezone-name">香港 (HKT)</div><div class="clock" id="clock-hongkong">00:00:00</div><div class="timezone-offset">UTC+8</div></div>
+    <div class="clock-card"><div class="timezone-name">帕果帕果 (SST)</div><div class="clock" id="clock-pago">00:00:00</div><div class="timezone-offset">UTC-11</div></div>
+    <div class="clock-card"><div class="timezone-name">檀香山 (HST)</div><div class="clock" id="clock-honolulu">00:00:00</div><div class="timezone-offset">UTC-10</div></div>
+    <div class="clock-card"><div class="timezone-name">安克拉治 (AKST)</div><div class="clock" id="clock-anchorage">00:00:00</div><div class="timezone-offset">UTC-9</div></div>
+    <div class="clock-card"><div class="timezone-name">洛杉磯 (PST)</div><div class="clock" id="clock-losangeles">00:00:00</div><div class="timezone-offset">UTC-8</div></div>
+    <div class="clock-card"><div class="timezone-name">丹佛 (MST)</div><div class="clock" id="clock-denver">00:00:00</div><div class="timezone-offset">UTC-7</div></div>
+    <div class="clock-card"><div class="timezone-name">墨西哥城 (CST)</div><div class="clock" id="clock-mexicocity">00:00:00</div><div class="timezone-offset">UTC-6</div></div>
+    <div class="clock-card"><div class="timezone-name">紐約 (EST)</div><div class="clock" id="clock-newyork">00:00:00</div><div class="timezone-offset">UTC-5</div></div>
+    <div class="clock-card"><div class="timezone-name">聖地牙哥 (CLT)</div><div class="clock" id="clock-santiago">00:00:00</div><div class="timezone-offset">UTC-4</div></div>
+    <div class="clock-card"><div class="timezone-name">里約熱內盧 (BRT)</div><div class="clock" id="clock-rio">00:00:00</div><div class="timezone-offset">UTC-3</div></div>
+    <div class="clock-card"><div class="timezone-name">聖保羅 (BRST)</div><div class="clock" id="clock-saopaulo">00:00:00</div><div class="timezone-offset">UTC-2</div></div>
+    <div class="clock-card"><div class="timezone-name">亞速群島 (AZOT)</div><div class="clock" id="clock-azores">00:00:00</div><div class="timezone-offset">UTC-1</div></div>
+    <div class="clock-card"><div class="timezone-name">倫敦 (GMT)</div><div class="clock" id="clock-london">00:00:00</div><div class="timezone-offset">UTC+0</div></div>
+    <div class="clock-card"><div class="timezone-name">巴黎 (CET)</div><div class="clock" id="clock-paris">00:00:00</div><div class="timezone-offset">UTC+1</div></div>
+    <div class="clock-card"><div class="timezone-name">開羅 (EET)</div><div class="clock" id="clock-cairo">00:00:00</div><div class="timezone-offset">UTC+2</div></div>
+    <div class="clock-card"><div class="timezone-name">莫斯科 (MSK)</div><div class="clock" id="clock-moscow">00:00:00</div><div class="timezone-offset">UTC+3</div></div>
+    <div class="clock-card"><div class="timezone-name">杜拜 (GST)</div><div class="clock" id="clock-dubai">00:00:00</div><div class="timezone-offset">UTC+4</div></div>
+    <div class="clock-card"><div class="timezone-name">塔什干 (UZT)</div><div class="clock" id="clock-tashkent">00:00:00</div><div class="timezone-offset">UTC+5</div></div>
+    <div class="clock-card"><div class="timezone-name">達卡 (BST)</div><div class="clock" id="clock-dhaka">00:00:00</div><div class="timezone-offset">UTC+6</div></div>
+    <div class="clock-card"><div class="timezone-name">雅加達 (WIB)</div><div class="clock" id="clock-jakarta">00:00:00</div><div class="timezone-offset">UTC+7</div></div>
+    <div class="clock-card"><div class="timezone-name">北京 (CST)</div><div class="clock" id="clock-beijing">00:00:00</div><div class="timezone-offset">UTC+8</div></div>
+    <div class="clock-card"><div class="timezone-name">東京 (JST)</div><div class="clock" id="clock-tokyo">00:00:00</div><div class="timezone-offset">UTC+9</div></div>
+    <div class="clock-card"><div class="timezone-name">雪梨 (AEST)</div><div class="clock" id="clock-sydney">00:00:00</div><div class="timezone-offset">UTC+10</div></div>
+    <div class="clock-card"><div class="timezone-name">霍尼亞拉 (SBT)</div><div class="clock" id="clock-honiara">00:00:00</div><div class="timezone-offset">UTC+11</div></div>
+    <div class="clock-card"><div class="timezone-name">奧克蘭 (NZST)</div><div class="clock" id="clock-auckland">00:00:00</div><div class="timezone-offset">UTC+12</div></div>
+</div>
+<hr><br>
+<h2 id="halfzone-title">半區／特殊邊界時區的即時時間</h2>
+<div class="clocks-grid">
+<div class="clock-card">
+  <div class="timezone-name">貝克島 (UTC-12)</div>
+  <div class="clock" id="clock-baker"></div>
+</div>
+<div class="clock-card">
+  <div class="timezone-name">聖約翰斯 (UTC-3:30)</div>
+  <div class="clock" id="clock-stjohns"></div>
+</div>
+<div class="clock-card">
+  <div class="timezone-name">德黑蘭 (UTC+3:30)</div>
+  <div class="clock" id="clock-tehran"></div>
+</div>
+<div class="clock-card">
+  <div class="timezone-name">喀布爾 (UTC+4:30)</div>
+  <div class="clock" id="clock-kabul"></div>
+</div>
+<div class="clock-card">
+  <div class="timezone-name">新德里 (UTC+5:30)</div>
+  <div class="clock" id="clock-delhi"></div>
+</div>
+<div class="clock-card">
+  <div class="timezone-name">加德滿都 (UTC+5:45)</div>
+  <div class="clock" id="clock-kathmandu"></div>
+</div>
+<div class="clock-card">
+  <div class="timezone-name">仰光 (UTC+6:30)</div>
+  <div class="clock" id="clock-yangon"></div>
+</div>
+<div class="clock-card">
+  <div class="timezone-name">尤克拉 (UTC+8:45)</div>
+  <div class="clock" id="clock-eucla"></div>
+</div>
+<div class="clock-card">
+  <div class="timezone-name">阿德雷德 (UTC+9:30)</div>
+  <div class="clock" id="clock-adelaide"></div>
+</div>
+<div class="clock-card">
+  <div class="timezone-name">達爾文 (UTC+10:30)</div>
+  <div class="clock" id="clock-darwin"></div>
+</div>
+<div class="clock-card">
+  <div class="timezone-name">查塔姆群島 (UTC+12:45)</div>
+  <div class="clock" id="clock-chatham"></div>
+</div>
+<div class="clock-card">
+  <div class="timezone-name">查塔姆群島夏令時 (UTC+13:45)</div>
+  <div class="clock" id="clock-chadt"></div>
+</div>
 </div>
 
 <div class="local-time">
@@ -320,17 +398,45 @@ height:100%;
 
 <script>
     function updateClock() {
-        var now = new Date();
-        var timezones = [
-            { id: 'newyork', offset: -5 },
-            { id: 'london', offset: 0 },
-            { id: 'tokyo', offset: 9 },
-            { id: 'sydney', offset: 11 },
-            { id: 'dubai', offset: 4 },
-            { id: 'singapore', offset: 8 },
-            { id: 'losangeles', offset: -8 },
-            { id: 'hongkong', offset: 8 }
-        ];
+    var now = new Date();
+    var timezones = [
+    { id: 'pago', offset: -11 },          // UTC-11 帕果帕果
+    { id: 'honolulu', offset: -10 },      // UTC-10 檀香山
+    { id: 'anchorage', offset: -9 },      // UTC-9 安克拉治
+    { id: 'losangeles', offset: -8 },     // UTC-8 洛杉磯
+    { id: 'denver', offset: -7 },         // UTC-7 丹佛
+    { id: 'mexicocity', offset: -6 },     // UTC-6 墨西哥城
+    { id: 'newyork', offset: -5 },        // UTC-5 紐約
+    { id: 'santiago', offset: -4 },       // UTC-4 聖地牙哥
+    { id: 'rio', offset: -3 },            // UTC-3 里約熱內盧
+    { id: 'saopaulo', offset: -2 },       // UTC-2 聖保羅
+    { id: 'azores', offset: -1 },         // UTC-1 亞速群島
+    { id: 'london', offset: 0 },          // UTC+0 倫敦
+    { id: 'paris', offset: 1 },           // UTC+1 巴黎
+    { id: 'cairo', offset: 2 },           // UTC+2 開羅
+    { id: 'moscow', offset: 3 },          // UTC+3 莫斯科
+    { id: 'dubai', offset: 4 },           // UTC+4 杜拜
+    { id: 'tashkent', offset: 5 },        // UTC+5 塔什干
+    { id: 'dhaka', offset: 6 },           // UTC+6 達卡
+    { id: 'jakarta', offset: 7 },         // UTC+7 雅加達
+    { id: 'beijing', offset: 8 },         // UTC+8 北京
+    { id: 'tokyo', offset: 9 },           // UTC+9 東京
+    { id: 'sydney', offset: 10 },         // UTC+10 雪梨
+    { id: 'honiara', offset: 11 },        // UTC+11 霍尼亞拉
+    { id: 'auckland', offset: 12 },       // UTC+12 奧克蘭
+{ id: 'baker', offset: -12 },          // UTC-12 貝克島 (Baker Island)
+{ id: 'stjohns', offset: -3.5 },       // UTC-3:30 聖約翰斯 (Newfoundland, Canada)
+{ id: 'tehran', offset: 3.5 },         // UTC+3:30 德黑蘭 (Iran)
+{ id: 'kabul', offset: 4.5 },          // UTC+4:30 喀布爾 (Afghanistan)
+{ id: 'delhi', offset: 5.5 },          // UTC+5:30 新德里 (India)
+{ id: 'kathmandu', offset: 5.75 },     // UTC+5:45 加德滿都 (Nepal)
+{ id: 'yangon', offset: 6.5 },         // UTC+6:30 仰光 (Myanmar)
+{ id: 'eucla', offset: 8.75 },         // UTC+8:45 尤克拉 (Western Australia)
+{ id: 'adelaide', offset: 9.5 },       // UTC+9:30 阿德雷德 (Australia)
+{ id: 'darwin', offset: 10.5 },        // UTC+10:30 達爾文 (Australia, 夏令時)
+{ id: 'chatham', offset: 12.75 },      // UTC+12:45 查塔姆群島 (New Zealand)
+{ id: 'chadt', offset: 13.75 }         // UTC+13:45 查塔姆群島夏令時 (New Zealand)
+    ];
         
         for (var i = 0; i < timezones.length; i++) {
             var tz = timezones[i];
