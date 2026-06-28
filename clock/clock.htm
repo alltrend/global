@@ -156,8 +156,8 @@
 
         .clock {
             font-size: 2.5em;
-            font-weight: bold;
-            color: #333;
+            font-weight: 900;
+            color: #005AB5;
             font-family: 'Courier New', monospace;
             letter-spacing: 3px;
             margin: 20px 0;
@@ -168,6 +168,7 @@
             background: rgba(255,255,255,0.3);
             border-radius: 10px;
             padding: 15px;
+            text-shadow:3px 3px 5px #66B3FF;
         }
 
         .timezone-offset {
@@ -188,9 +189,12 @@
         }
 
         .local-time h2 {
-            color: #0080FF;
+            color: #0072E3;
             margin-bottom: 20px;
-            font-size: 1.8em;
+            font-family: 'Noto Sans TC', 'Courier New', monospace;
+            font-size: 1.9vw;
+            font-weight: 900;
+            text-shadow:3px 3px 5px #66B3FF;
         }
 
         .local-clock {
@@ -201,17 +205,19 @@
         }
 
         .local-clock .time {
-            font-size: 4em;
-            font-weight: bold;
+            font-size: 3.6vw;
+            font-weight: 900;
             color: #005AB5;
-            font-family: 'Courier New', monospace;
+            font-family: 'Noto Sans TC', 'Courier New', monospace;
             letter-spacing: 4px;
+            text-shadow:3px 3px 5px #66B3FF;
         }
 
         .local-clock .date {
             font-size: 1.6em;
-            color: #46A3FF;
+            color: #0080FF;
             font-weight: 700;
+            text-shadow:3px 3px 5px #66B3FF;
         }
 
         @media (max-width: 768px) {
@@ -388,7 +394,7 @@ height:100%;
 </div>
 
 <div class="local-time">
-<h2>你的本地時間</h2>
+<h2>你的現在時間</h2>
 <div class="local-clock">
 <div class="time" id="local-time">00:00:00</div>
 <div class="date" id="local-date">載入中...</div>
