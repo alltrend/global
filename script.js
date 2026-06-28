@@ -1,71 +1,55 @@
-// Define time zones with their UTC offsets
-const timeZones = {
-    'newyork': { name: 'America/New_York', offset: -5 },
-    'london': { name: 'Europe/London', offset: 0 },
-    'tokyo': { name: 'Asia/Tokyo', offset: 9 },
-    'sydney': { name: 'Australia/Sydney', offset: 11 },
-    'dubai': { name: 'Asia/Dubai', offset: 4 },
-    'singapore': { name: 'Asia/Singapore', offset: 8 },
-    'losangeles': { name: 'America/Los_Angeles', offset: -8 },
-    'hongkong': { name: 'Asia/Hong_Kong', offset: 8 }
-};
-
-// Function to format time with leading zeros
-function formatTime(hours, minutes, seconds) {
-    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-}
-
-// Function to format date
-function formatDate(date) {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
-}
-
-// Function to get time for specific timezone
-function getTimeInTimeZone(tzName) {
+function updateClock() {
     const now = new Date();
-    const utc = now.getTime() + now.getTimezoneOffset() * 60000;
-    const tzTime = new Date(utc + 3600000 * timeZones[tzName].offset);
-    return tzTime;
-}
-
-// Function to update all clocks
-function updateClocks() {
-    // Update world clocks
-    for (const [key, tz] of Object.entries(timeZones)) {
-        const time = getTimeInTimeZone(key);
-        const hours = time.getHours();
-        const minutes = time.getMinutes();
-        const seconds = time.getSeconds();
-        
-        const clockElement = document.getElementById(`clock-${key}`);
-        if (clockElement) {
-            clockElement.textContent = formatTime(hours, minutes, seconds);
-        }
-    }
     
-    // Update local time
-    const now = new Date();
-    const localHours = now.getHours();
-    const localMinutes = now.getMinutes();
-    const localSeconds = now.getSeconds();
+    // 時區列表
+    const timezones = [
+        { id: 'newyork', offset: -5 },
+        { id: 'london', offset: 0 },
+        { id: 'tokyo', offset: 9 },
+        { id: 'sydney', offset: 11 },
+        { id: 'dubai', offset: 4 },
+        { id: 'singapore', offset: 8 },
+        { id: 'losangeles', offset: -8 },
+        { id: 'hongkong', offset: 8 }
+    ];
+    
+    // 更新每個時鐘
+    timezones.forEach(tz => {
+        const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+        const tzTime = new Date(utc + (3600000 * tz.offset));
+        
+        const hours = String(tzTime.getHours()).padStart(2, '0');
+        const minutes = String(tzTime.getMinutes()).padStart(2, '0');
+        const seconds = String(tzTime.getSeconds()).padStart(2, '0');
+        
+        const element = document.getElementById('clock-' + tz.id);
+        if (element) {
+            element.textContent = hours + ':' + minutes + ':' + seconds;
+        }
+    });
+    
+    // 更新本地時間
+    const localHours = String(now.getHours()).padStart(2, '0');
+    const localMinutes = String(now.getMinutes()).padStart(2, '0');
+    const localSeconds = String(now.getSeconds()).padStart(2, '0');
     
     const localTimeElement = document.getElementById('local-time');
-    const localDateElement = document.getElementById('local-date');
-    
     if (localTimeElement) {
-        localTimeElement.textContent = formatTime(localHours, localMinutes, localSeconds);
+        localTimeElement.textContent = localHours + ':' + localMinutes + ':' + localSeconds;
     }
     
-    if (localDateElement) {
-        localDateElement.textContent = formatDate(now);
+    // 更新日期
+    const dateElement = document.getElementById('local-date');
+    if (dateElement) {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        dateElement.textContent = now.toLocaleDateString('en-US', options);
     }
 }
 
-// Update clocks immediately and then every second
-updateClocks();
-setInterval(updateClocks, 1000);
+// 立即更新一次
+updateClock();
 
-// Add some console logging for debugging
-console.log('Digital Clock loaded successfully!');
-console.log('Updating time zones:', Object.keys(timeZones));
+// 每秒更新
+setInterval(updateClock, 1000);
+
+console.log('Clock started!');
