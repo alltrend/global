@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<title>🌏全方位網路綜合網站🌐</title>
+<style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background: #ACD6FF;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .container {
+      width: 100%;
+      margin-top: 1px;
+      padding: 0 10px;
+      box-sizing: border-box;
+    }
+    header {
+      background: #005FAF;
+      color: #fff;
+      padding: 0.1vw;
+      text-align: center;
+      border-radius: 8px;
+    }
+    nav a {
+      margin: 0 10px;
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    h1 {
+  margin-top: 0 !important;   /* 強制把上方間距設為 0 */
+  margin-bottom: 0.1em !important; /* 視需要調整下方間距 */
+  filter: blur(1.3px); /* 減少模糊，粗細更清楚 */
+  font-size: 3.8em;
+  font-weight: 900; /* 使用 Montserrat 的特粗字重 */
+  font-family: "Noto Sans TC", "Noto Serif TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+  animation: colorchange 20s infinite;
+  z-index: 2;
+  text-shadow: 0 0 30px currentColor, 0 0 50px currentColor;
+}
+  @keyframes colorchange {
+  0%   { color: #ff6666; }   /* 淺紅 */
+  5%   { color: #ff9966; }   /* 橘粉 */
+  10%  { color: #ffcc66; }   /* 金黃 */
+  15%  { color: #ffee66; }   /* 淺黃 */
+  20%  { color: #ff66aa; }   /* 桃紅 */
+  25%  { color: #ff99cc; }   /* 粉紅 */
+  30%  { color: #ffccff; }   /* 淡粉紫 */
+  35%  { color: #cc99ff; }   /* 淺紫 */
+  40%  { color: #b3c6ff; }   /* 淡藍紫 (比9999ff更亮) */
+  45%  { color: #99ccff; }   /* 淺亮藍 */
+  50%  { color: #aaddff; }   /* 天空藍 (取代偏暗6699ff) */
+  55%  { color: #cceeff; }   /* 淡冰藍 (取代偏綠66ffff) */
+  60%  { color: #99ffff; }   /* 冰藍 */
+  65%  { color: #ccffff; }   /* 淺水藍 */
+  70%  { color: #e6ffff; }   /* 幾乎白的藍 */
+  75%  { color: #ffccdd; }   /* 淡粉白 */
+  80%  { color: #ffddee; }   /* 淡紫粉 */
+  85%  { color: #ffeeff; }   /* 淡紫白 */
+  90%  { color: #fff0f5; }   /* 淺玫瑰白 */
+  95%  { color: #ffe6f2; }   /* 淡粉白亮色 */
+  100% { color: #ff6666; }   /* 回到淺紅 */
+  }
+    
+    .card {
+      background: #C4E1FF;
+      padding: 0.1vw;
+      margin: 0.2vw;
+      border-radius: 8px;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  #gallery {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;   /* 不換行 */
+  overflow-x: auto;    /* ✅ 改成橫向捲動 */
+}
+  #gallery img {
+  width: 280px;        /* 固定寬度，避免太窄 */
+  height: 230px;
+  object-fit: cover;
+  border: 3px solid #ccc;
+  border-radius: 8px;
+}
+
+
+    button {
+      margin: 5px;
+      padding: 5px 10px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+    }
+    /* 摺疊 Summary JSON 美化 */
+    .json-summary summary {
+      cursor: pointer;
+      padding: 8px;
+      font-weight: bold;
+      background: #C4E1FF;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .json-summary summary:hover {
+      background: #e0e0e0;
+    }
+    .json-summary[open] summary {
+      background: #cce5ff;
+    }
+    .json-summary summary::marker {
+      content: "▶ ";
+    }
+    .json-summary[open] summary::marker {
+      content: "▼ ";
+    }
+    .json-summary textarea {
+      width: 100%;
+      height: 120px;
+      margin-top: 10px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      padding: 8px;
+      font-family: monospace;
+    }
+    
+    .nav-container {
+    display: flex;
+    align-items: center;
+  }
+  #quick-links {
+  width: 100%;       /* 撐滿整個可用寬度 */
+  display: flex;
+  overflow-x: auto;  /* 保留橫向捲動 */
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox 隱藏捲軸 */
+  -ms-overflow-style: none; /* IE/Edge 舊版 */
+}
+#quick-links::-webkit-scrollbar {
+  display: none; /* Chrome / Edge 新版 */
+}
+
+
+/* Reset */
+html,body {
+height:100%;
+  overflow-x: hidden;   /* 禁止橫向滾動 */
+  overflow-y: auto;     /* ✅ 允許垂直滾動 */
+}
+
+
+/* 📱 小型手機（小於 480px） */
+@media (max-width: 479px) {
+  .toolbar {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .toolbar select,
+  .toolbar input,
+  .toolbar button {
+    width: 100%;
+  }
+  table {
+    font-size: 13px;
+  }
+  #container {
+    grid-template-columns: 1fr;
+  }
+  #sidebar {
+    position: absolute;
+    top: 42px;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: #fff;
+    z-index: 1000;
+    border-right: none;
+    border-top: 1px solid #ddd;
+  }
+  #map {
+    height: calc(100vh - 42px);
+  }
+  header > * {
+    flex: 1 1 100%;
+  }
+}
+/* 📱 中型手機（480px 到 767px） */
+@media (min-width: 480px) and (max-width: 767px) {
+  .toolbar {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .toolbar select,
+  .toolbar input,
+  .toolbar button {
+    width: 100%;
+  }
+  table {
+    font-size: 14px;
+  }
+  #container {
+    grid-template-columns: 1fr;
+  }
+  #sidebar {
+    position: absolute;
+    top: 42px;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: #fff;
+    z-index: 1000;
+    border-right: none;
+    border-top: 1px solid #ddd;
+  }
+  #map {
+    height: calc(100vh - 42px);
+  }
+  header > * {
+    flex: 1 1 100%;
+  }
+}
+/* 📱 大型手機／小平板（768px 到 1023px） */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .toolbar {
+    flex-direction: row;
+    gap: 12px;
+  }
+  .toolbar select,
+  .toolbar input,
+  .toolbar button {
+    width: auto;
+  }
+  table {
+    font-size: 15px;
+  }
+  #container {
+    grid-template-columns: 1fr;
+  }
+  #sidebar {
+    position: absolute;
+    top: 42px;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: #fff;
+    z-index: 1000;
+    border-right: none;
+    border-top: 1px solid #ddd;
+  }
+  #map {
+    height: calc(100vh - 42px);
+  }
+  header > * {
+    flex: 1 1 100%;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>🌏全方位網路綜合網站🌐</h1>
+<div class="nav-container">
+<button id="scroll-left">←</button>
+<nav id="quick-links"></nav>
+<button id="scroll-right">→</button>
+</div>
+</header>
+<main>
+<section class="card">
+<div id="dashboard" style="width:80%;margin:3px auto;padding:0px;
+border:none;background:transparent;color:#66B3FF;font-family:monospace;
+text-align:center;font-size:26px;font-weight:bold;opacity:1;
+text-shadow:2px 2px 4px #000;">
+<span id="time">現在時間：--</span>
+</div>
+</section>
+
+      <section class="card">
+        <h2>天氣資料</h2>
+        <div id="weatherData"></div>
+        <button onclick="loadWeatherData()">更新天氣</button>
+      </section>
+
+      <section class="card">
+      <h2>風景圖片</h2>
+      <div id="gallery"></div>
+      <div class="gallery-controls">
+      <button onclick="prevImages()">&#9664; 上一組</button>
+      <button onclick="nextImages()">下一組 &#9654;</button>
+      </div>
+      </section>
+
+      <section class="card">
+        <h2>新聞快訊</h2>
+        <input id="searchInput" placeholder="搜尋新聞..." />
+        <button onclick="searchNews()">搜尋</button>
+        <button onclick="clearSearch()">返回</button>
+        <ul id="rssList"></ul>
+        <div id="pagination"></div>
+      </section>
+
+<section class="card">
+<h2>收藏功能</h2>
+<!-- 摺疊 Summary JSON -->
+<details class="json-summary">
+<summary>📂（點我展開 / 收合）</summary>
+<button onclick="clearFavorites()">清除收藏</button>
+<button onclick="exportJSON()">輸出 JSON</button>
+<button onclick="importJSON()">匯入 JSON</button>
+<textarea id="jsonArea" placeholder="這裡會顯示或輸入 JSON"></textarea>
+</details>
+<ul id="favorites"></ul>
+</section>
+</main>
+</div>
+<script>
+// ====== 常用入口網站 ======
+const links = [
+    { name: "Google", url: "https://www.google.com" },
+    { name: "Bing", url: "https://www.bing.com" },
+    { name: "Yahoo", url: "https://tw.search.yahoo.com" },
+    { name: "Baidu", url: "https://baidu.com" },
+    { name: "YouTube", url: "https://www.youtube.com" },
+    { name: "BiliBili", url: "https://www.bilibili.com" },
+    { name: "Douyin", url: "https://www.douyin.com" },
+    { name: "Facebook", url: "https://www.facebook.com" },
+    { name: "Instagram", url: "https://www.instagram.com" },
+    { name: "Twitter", url: "https://twitter.com" },
+    { name: "Reddit", url: "https://www.reddit.com" },
+    { name: "Wikipedia", url: "https://www.wikipedia.org" },
+    { name: "Netflix", url: "https://www.netflix.com" },
+    { name: "PTT", url: "https://www.ptt.cc" },
+    { name: "Ebay", url: "https://www.ebay.com" },
+    { name: "Amazon", url: "https://www.amazon.com" },
+    { name: "網路新聞連結網", url: "news.htm" },
+    { name: "全方位網路智慧搜尋", url: "aisearch.htm" },
+    { name: "全方位AI聊天平台入口", url: "aichat1.htm" },
+    { name: "網路AI聊天室", url: "aichat2.htm" },
+    { name: "全方位廣播音樂播放器", url: "radio.htm" },
+    { name: "全方位網路多語言翻譯", url: "translator.htm" },
+    { name: "台日風景/交通/太空影像", url: "10.htm" }
+  ];
+  const nav = document.getElementById('quick-links');
+  links.forEach(link => {
+    const a = document.createElement('a');
+    a.href = link.url;
+    a.textContent = link.name;
+    a.target = "_blank";
+    nav.appendChild(a);
+  });
+  document.getElementById('scroll-left').onclick = () => {
+    nav.scrollBy({ left: -200, behavior: 'smooth' });
+  };
+  document.getElementById('scroll-right').onclick = () => {
+    nav.scrollBy({ left: 200, behavior: 'smooth' });
+  };
+
+
+// ====== 時間顯示 ======
+function updateTime() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const hour = String(now.getHours()).padStart(2, '0');
+  const minute = String(now.getMinutes()).padStart(2, '0');
+  // 星期陣列
+  const weekdays = ["日","一","二","三","四","五","六"];
+  const weekday = weekdays[now.getDay()];
+  document.getElementById("time").innerHTML =
+  `📅${year}年${month}月${day}日<br>🕓${hour}時${minute}分 星期${weekday}`;
+}
+// 每秒更新一次（保持穩定）
+setInterval(updateTime, 1000);
+updateTime();
+
+
+// ====== 天氣資料 ======
+function loadWeatherData(){
+  var weatherDiv = document.getElementById('weatherData');
+  weatherDiv.innerHTML = "載入中...";
+  var cities = [
+    {name:"基隆", lat:25.1276, lon:121.7392},
+    {name:"宜蘭", lat:24.75, lon:121.75},
+    {name:"台北", lat:25.0330, lon:121.5654},
+    {name:"新北", lat:25.0140, lon:121.4650},
+    {name:"桃園", lat:24.9900, lon:121.3000},
+    {name:"新竹", lat:24.8138, lon:120.9675},
+    {name:"台中", lat:24.1477, lon:120.6736},
+    {name:"雲林", lat:23.7080, lon:120.4310},
+    {name:"嘉義", lat:23.4800, lon:120.4490},
+    {name:"台南", lat:22.9999, lon:120.2270},
+    {name:"高雄", lat:22.6273, lon:120.3014},
+    {name:"花蓮", lat:23.9750, lon:121.6070},
+    {name:"台東", lat:22.7570, lon:121.1440},
+    {name:"澎湖", lat:23.5667, lon:119.5667},
+    {name:"金門", lat:24.4333, lon:118.3167},
+    {name:"馬祖", lat:26.1593, lon:119.9340}
+  ];
+  weatherDiv.innerHTML = '';
+  var i = 0;
+  function fetchNextCity(){
+    if(i>=cities.length){
+      var now = new Date();
+      // 更新時間顯示到 年月日 + 時:分
+      weatherDiv.insertAdjacentHTML('beforeend',
+        '<div class="update-time"><br>更新於: '+
+        now.toLocaleString("zh-TW",{year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"})+
+        '</div>');
+      return;
+    }
+    var city = cities[i];
+    fetch('https://api.open-meteo.com/v1/forecast?latitude='+city.lat+'&longitude='+city.lon+'&current_weather=true')
+    .then(res => res.json())
+    .then(data=>{
+      var temp = (data.current_weather && data.current_weather.temperature != null) ? data.current_weather.temperature : "N/A";
+      var time = new Date((data.current_weather && data.current_weather.time) ? data.current_weather.time : Date.now());
+      var div = document.createElement('div');
+      div.className = 'data-item';
+      // 城市日期只顯示 年月日
+      div.textContent = city.name + "：溫度 " + temp + "°C (" +
+        time.toLocaleDateString("zh-TW",{year:"numeric",month:"2-digit",day:"2-digit"}) + ")";
+      weatherDiv.appendChild(div);
+    })
+    .catch(e=>{
+      var div = document.createElement('div');
+      div.className = 'data-item';
+      div.textContent = city.name + "：氣象資料抓取失敗";
+      weatherDiv.appendChild(div);
+      console.error(e);
+    })
+    .finally(()=>{
+      i++;
+      fetchNextCity();
+    });
+  }
+  fetchNextCity();
+}
+document.addEventListener("DOMContentLoaded", loadWeatherData);
+
+
+// ====== 圖片展示 ======
+let currentIndex = 10; // 從第1張開始
+const gallery = document.getElementById('gallery');
+const MAX_IMAGES = 150; // 最多顯示150張，避免爆滿
+function renderImages() {
+  gallery.innerHTML = ""; // 每次重繪一組
+  for (let i = 0; i < 5; i++) {
+    const id = currentIndex + i; // 用 id 保證縮圖和大圖一致
+    const thumbUrl = `https://picsum.photos/id/${id}/400/225`;
+    const bigUrl = `https://picsum.photos/id/${id}/1600/900`;
+    const link = document.createElement('a');
+    link.href = bigUrl;
+    link.target = "_blank"; // 新分頁開啟大圖
+    const img = document.createElement('img');
+    img.src = thumbUrl;
+    img.alt = "隨機圖片";
+    img.style.margin = "5px";
+    img.loading = "lazy"; // 延遲載入
+    link.appendChild(img);
+    gallery.appendChild(link);
+  }
+  // 限制最多顯示150張（雖然這裡每次重繪，不會爆滿，但保險起見）
+  while (gallery.children.length > MAX_IMAGES) {
+    gallery.removeChild(gallery.firstChild);
+  }
+}
+function prevImages() {
+  currentIndex = Math.max(1, currentIndex - 5); // 不要小於1
+  renderImages();
+}
+function nextImages() {
+  currentIndex += 5; // 每次往後5張
+  renderImages();
+}
+// 初始載入
+renderImages();
+
+
+// ====== RSS 新聞 ======
+let rssList = [
+  "https://www.cna.com.tw/rss.aspx",
+  "https://news.ltn.com.tw/rss/all.xml",
+  "https://udn.com/rssfeed/news/1/2/0?ch=news",
+  "https://www.ettoday.net/rss/news.xml",
+  "https://tw.news.yahoo.com/rss",
+  "https://news.tvbs.com.tw/rss/news.xml",
+  "https://www.storm.mg/rss/latest",
+  "https://newtalk.tw/rss",
+  "https://www.nownews.com/rss",
+  "https://feeds.bbci.co.uk/news/world/rss.xml",
+  "https://rss.cnn.com/rss/edition.rss",
+  "https://www.reuters.com/rssFeed/worldNews",
+  "https://www.nhk.or.jp/rss/news/cat0.xml",
+  "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+  "https://www.aljazeera.com/xml/rss/all.xml",
+  "https://www.nasa.gov/rss/dyn/breaking_news.rss"
+];
+let rssLinks = [];
+let currentPage = 1;
+const itemsPerPage = 15;
+let searchKeyword = "";
+async function fetchRSS(rssUrl){
+  try {
+    const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(rssUrl));
+    const data = await res.json();
+    if(data.items && data.items.length > 0){
+      return data.items.map(it => ({
+        title: it.title,
+        url: it.link,
+        source: data.feed?.title || rssUrl,
+        date: it.pubDate || new Date(),
+        clicks: 0
+      }));
+    }
+  } catch(e){ console.warn("rss2json 抓取失敗:", rssUrl, e); }
+  return [];
+}
+async function fetchAll(){
+  let items = [];
+  const results = await Promise.all(rssList.map(rss => fetchRSS(rss)));
+  results.forEach(feedItems => items.push(...feedItems));
+  const seen = new Set();
+  rssLinks = items.filter(link=>{
+    if(seen.has(link.url)) return false;
+    seen.add(link.url);
+    return true;
+  });
+  renderPage();
+}
+
+function renderPage(){
+  const list = document.getElementById("rssList");
+  list.innerHTML = "";
+  let filteredLinks = rssLinks;
+  if(searchKeyword.trim() !== ""){
+    filteredLinks = rssLinks.filter(link => link.title.toLowerCase().includes(searchKeyword.toLowerCase()));
+  }
+  const start = (currentPage - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const pageItems = filteredLinks.slice(start, end);
+  pageItems.forEach(link=>{
+    const li = document.createElement("li");
+    const pubDate = new Date(link.date).toLocaleString("zh-TW");
+    li.innerHTML = `
+      <a href="${link.url}" target="_blank">${link.title}</a>
+      <a href="https://translate.google.com/translate?hl=zh-TW&sl=auto&u=${encodeURIComponent(link.url)}" target="_blank">🌐 Google翻譯</a>
+      <div class="stats">
+        來源: ${link.source || "未知"} 
+        | 日期: ${pubDate} 
+        | 點擊次數: ${link.clicks||0}
+      </div>
+    `;
+    list.appendChild(li);
+  });
+  const pagination = document.getElementById("pagination");
+  pagination.innerHTML = "";
+  const totalPages = Math.ceil(filteredLinks.length / itemsPerPage);
+  if(currentPage > 1){
+    const prevBtn = document.createElement("button");
+    prevBtn.textContent = "上一頁";
+    prevBtn.onclick = ()=>{ currentPage--; renderPage(); };
+    pagination.appendChild(prevBtn);
+  }
+  for(let i=1; i<=totalPages; i++){
+    const btn = document.createElement("button");
+    btn.textContent = i;
+    btn.onclick = ()=>{ currentPage = i; renderPage(); };
+    if(i === currentPage) btn.style.fontWeight = "bold";
+    pagination.appendChild(btn);
+  }
+  if(currentPage < totalPages){
+    const nextBtn = document.createElement("button");
+    nextBtn.textContent = "下一頁";
+    nextBtn.onclick = ()=>{ currentPage++; renderPage(); };
+    pagination.appendChild(nextBtn);
+  }
+}
+fetchAll();
+setInterval(fetchAll, 600000);
+
+
+// ====== 搜尋功能 ======
+function searchNews(){
+  const input = document.getElementById("searchInput");
+  searchKeyword = input.value;
+  currentPage = 1;
+  renderPage();
+}
+function clearSearch(){
+  document.getElementById("searchInput").value = "";
+  searchKeyword = "";
+  currentPage = 1;
+  renderPage();
+}
+document.addEventListener("DOMContentLoaded", ()=>{
+  const input = document.getElementById("searchInput");
+  input.addEventListener("keypress", function(event){
+    if(event.key === "Enter"){
+      event.preventDefault();
+      searchNews();
+    }
+  });
+});
+// ====== 收藏功能 ======
+let favorites = [];
+function renderFavorites(){
+  const list = document.getElementById("favorites");
+  list.innerHTML = "";
+  favorites.forEach((fav, idx)=>{
+    const li = document.createElement("li");
+    li.textContent = fav;
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "刪除";
+    delBtn.onclick = ()=>{ 
+      favorites.splice(idx,1); 
+      renderFavorites(); 
+      saveFavorites(); 
+    };
+    li.appendChild(delBtn);
+    list.appendChild(li);
+  });
+}
+
+function saveFavorites(){
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+function loadFavorites(){
+  const data = localStorage.getItem("favorites");
+  if(data){ favorites = JSON.parse(data); }
+  renderFavorites();
+}
+
+function clearFavorites(){
+  favorites = [];
+  saveFavorites();
+  renderFavorites();
+}
+
+function exportJSON(){
+  document.getElementById("jsonArea").value = JSON.stringify(favorites, null, 2);
+}
+
+function importJSON(){
+  try {
+    const data = JSON.parse(document.getElementById("jsonArea").value);
+    if(Array.isArray(data)){
+      favorites = data;
+      saveFavorites();
+      renderFavorites();
+    } else {
+      alert("JSON 格式錯誤");
+    }
+  } catch(e){
+    alert("JSON 解析失敗");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadFavorites);
+
+
+// 定義字型清單
+const fonts = [
+  '"Noto Sans TC"',       // 思源黑體
+  '"Noto Serif TC"',      // 思源宋體
+  '"Microsoft JhengHei"', // 微軟正黑體
+  '"PingFang TC"',        // 蘋方字體
+  'sans-serif'            // 保底
+];
+// 隨機挑一個字型
+const randomFont = fonts[Math.floor(Math.random() * fonts.length)];
+// 套用到 h1，並加上完整 fallback 順序
+document.querySelector("h1").style.fontFamily =
+`${randomFont}, "Noto Sans TC", "Noto Serif TC", "Microsoft JhengHei", "PingFang TC", sans-serif`;
+// 綁定 Enter 事件
+document.getElementById("searchBox").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); // 防止表單預設提交
+    search(); // 呼叫搜尋函式
+  }
+});
+</script>
+</body>
+</html>
